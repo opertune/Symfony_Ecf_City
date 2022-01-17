@@ -18,6 +18,12 @@ class Article
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="articles")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $title;
@@ -37,15 +43,21 @@ class Article
      */
     private $date;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="articles")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $category_id;
-
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
     }
 
     public function getTitle(): ?string
@@ -92,18 +104,6 @@ class Article
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
-
-        return $this;
-    }
-
-    public function getCategoryId(): ?Category
-    {
-        return $this->category_id;
-    }
-
-    public function setCategoryId(?Category $category_id): self
-    {
-        $this->category_id = $category_id;
 
         return $this;
     }

@@ -25,7 +25,7 @@ class Category
     private $title;
 
     /**
-     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="category_id", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="category", orphanRemoval=true)
      */
     private $articles;
 
@@ -63,7 +63,7 @@ class Category
     {
         if (!$this->articles->contains($article)) {
             $this->articles[] = $article;
-            $article->setCategoryId($this);
+            $article->setCategory($this);
         }
 
         return $this;
@@ -73,8 +73,8 @@ class Category
     {
         if ($this->articles->removeElement($article)) {
             // set the owning side to null (unless already changed)
-            if ($article->getCategoryId() === $this) {
-                $article->setCategoryId(null);
+            if ($article->getCategory() === $this) {
+                $article->setCategory(null);
             }
         }
 

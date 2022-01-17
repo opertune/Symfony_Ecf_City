@@ -18,12 +18,12 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $surname;
 
@@ -37,6 +37,11 @@ class User
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $role;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -47,7 +52,7 @@ class User
         return $this->name;
     }
 
-    public function setName(?string $name): self
+    public function setName(string $name): self
     {
         $this->name = $name;
 
@@ -59,7 +64,7 @@ class User
         return $this->surname;
     }
 
-    public function setSurname(?string $surname): self
+    public function setSurname(string $surname): self
     {
         $this->surname = $surname;
 
@@ -86,6 +91,18 @@ class User
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getRole(): ?int
+    {
+        return $this->role;
+    }
+
+    public function setRole(int $role): self
+    {
+        $this->role = $role;
 
         return $this;
     }
