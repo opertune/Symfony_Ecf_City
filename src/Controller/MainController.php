@@ -31,7 +31,7 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/histoire", name="histoire")
+     * @Route("/histoire", name="history")
      */
     public function histoire(): Response {
         return $this->render('main/histoire.html.twig');
@@ -44,6 +44,12 @@ class MainController extends AbstractController
         return $this->render('main/contact.html.twig');
     }
 
+    /**
+     * @Route("/rendezvous", name="dating")
+     */
+    public function dating(): Response {
+        return $this->render('main/dating.html.twig');
+    }
     /**
      * @Route("/admin", name="admin")
      */
