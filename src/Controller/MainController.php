@@ -7,19 +7,25 @@ use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class MainController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function home(ArticleRepository $article_repo): Response
+    public function home(ArticleRepository $article_repo, HttpClientInterface $client): Response
     {
+        // Get weather at LeCaire
+        $response = $client->request('POST', 'https://api.openweathermap.org/data/2.5/weather?q=le+caire&units=metric&lang=fr&appid='.$_ENV['WEATHER_API_KEY']);
+        $weather = $response->toArray();
+        // Get all article by categorie name
         $events = $article_repo->findByCategorie('Évènement');
         $news = $article_repo->findByCategorie('Actualite');
         return $this->render('main/home.html.twig',[
             'events' => $events,
             'news' => $news,
+            'weather' => $weather,
         ]);
     }
 
