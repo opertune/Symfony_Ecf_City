@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -55,5 +56,14 @@ class MainController extends AbstractController
      */
     public function login(): Response {
         return $this->render('main/login.html.twig');
+    }
+
+    /**
+     * @Route("/article/{id}", name="show_article")
+     */
+    public function show_event_byid(Article $article): Response {
+        return $this->render('main/article.html.twig', [
+            'article' => $article,
+        ]);
     }
 }

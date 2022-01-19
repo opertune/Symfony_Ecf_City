@@ -22,10 +22,10 @@ class ArticleFixtures extends Fixture
             $manager->persist($catagory);
             for($j = 1; $j <= mt_rand(6, 10); $j++){
                 $article = new Article();
-                $article->setTitle($faker->sentence())
-                ->setDescription($faker->paragraph())
+                $article->setTitle("Titre ".$category_title[$i]." {$j}")
+                ->setDescription($faker->paragraph(15, false))
                 ->setDate($faker->dateTimeBetween('-6 months', 'now'))
-                ->setImage('http://picsum.photos/id/'.mt_rand(1,200).'/400/300')
+                ->setImage('http://picsum.photos/id/'.mt_rand(1,200).'/500/400')
                 ->setCategory($catagory);
                 $manager->persist($article);
             }
