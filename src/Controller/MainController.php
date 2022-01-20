@@ -26,7 +26,7 @@ class MainController extends AbstractController
         // Get all article by categorie name
         $events = $article_repo->findByCategorie('Évènement');
         $news = $article_repo->findByCategorie('Actualite');
-        
+
         return $this->render('main/home.html.twig',[
             'events' => $events,
             'news' => $news,
@@ -57,26 +57,6 @@ class MainController extends AbstractController
         return $this->render('main/contact.html.twig',[
             'form' => $form->createView(),
         ]);
-    }
-
-    /**
-     * @Route("/rendezvous", name="dating")
-     */
-    public function dating(): Response {
-        return $this->render('main/dating.html.twig');
-    }
-    /**
-     * @Route("/admin", name="admin")
-     */
-    public function admin(): Response {
-        return $this->render('main/admin.html.twig');
-    }
-
-    /**
-     * @Route("/login", name="login")
-     */
-    public function login(): Response {
-        return $this->render('main/login.html.twig');
     }
 
     /**
