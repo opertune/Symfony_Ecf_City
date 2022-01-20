@@ -2,30 +2,27 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Article;
+use App\Entity\News;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
-class ArticleCrudController extends AbstractCrudController
+class NewsCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Article::class;
+        return News::class;
     }
 
-    
     public function configureFields(string $pageName): iterable
     {
         return [
-            AssociationField::new('category', 'Categorie'),
             TextField::new('title', 'Titre'),
             TextEditorField::new('description', 'Description'),
-            ImageField::new('image')->setUploadDir('/public/img'),
+            ImageField::new('image')->setUploadDir('/public/image/new'),
             DateTimeField::new('date', 'Date de création'),
         ];
     }
@@ -33,11 +30,9 @@ class ArticleCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-        ->setPageTitle('index', '<h3>Ajouter, supprimer ou modifier des évènements et des actualités</h3>')
-        ->setDefaultSort(['category'=>'ASC'])
+        ->setPageTitle('index', '<h3>Ajouter, supprimer ou modifier des actualités.</h3>')
         ->setDateTimeFormat('dd/mm/Y hh:mm')
         
         ;
     }
-    
 }

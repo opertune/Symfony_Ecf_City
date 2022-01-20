@@ -15,11 +15,11 @@
                 <div id="carouselExampleCaptions" class="carousel slide col-12" data-bs-ride="carousel" data-interval="false">
                 <h3>Actualités</h3>
                     <div class="carousel-inner">
-                        {% for key, new in news %}
+                        {% for key, new in news %}d
                             {{ key == 0 ? '<div class="carousel-item active">' : '<div class="carousel-item">'}}
                                 <img src="{{new.image}}" class="d-block w-100" alt="Actualité Image">
                                 <div class="carousel-caption d-none d-md-block text-light bg-dark opacity-75">
-                                    <a href="{{ path("show_article", {'id': new.id})}}"><h5>{{new.title}}</h5></a>
+                                    <a href="{{ path("show_new", {'id': new.id})}}"><h5>{{new.title}}</h5></a>
                                 </div>
                             </div>
                         {% endfor %}
@@ -47,7 +47,7 @@
                             {{ key == 0 ? '<div class="carousel-item active">' : '<div class="carousel-item">'}}
                                 <img src="{{event.image}}" class="d-block w-100" alt="Évènement Image">
                                 <div class="carousel-caption d-none d-md-block text-light bg-dark opacity-75">
-                                    <a href="{{ path("show_article", {'id': event.id})}}"><h5>{{event.title}}</h5></a>
+                                    <a href="{{ path("show_event", {'id': event.id})}}"><h5>{{event.title}}</h5></a>
                                 </div>
                             </div>
                         {% endfor %}
