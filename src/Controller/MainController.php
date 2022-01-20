@@ -22,9 +22,11 @@ class MainController extends AbstractController
         // Get weather at LeCaire
         $response = $client->request('POST', 'https://api.openweathermap.org/data/2.5/weather?q=le+caire&units=metric&lang=fr&appid='.$_ENV['WEATHER_API_KEY']);
         $weather = $response->toArray();
+
         // Get all article by categorie name
         $events = $article_repo->findByCategorie('Évènement');
         $news = $article_repo->findByCategorie('Actualite');
+        
         return $this->render('main/home.html.twig',[
             'events' => $events,
             'news' => $news,
