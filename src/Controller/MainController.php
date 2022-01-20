@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Form\ContactType;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -40,8 +42,19 @@ class MainController extends AbstractController
     /**
      * @Route("/contact", name="contact")
      */
-    public function contact(): Response {
-        return $this->render('main/contact.html.twig');
+    public function contact(Request $request): Response {
+        $form = $this->createForm(ContactType::class);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $this->addFlash('success','Message envoyé avec succès !');
+            return $this->redirectToRoute('contact');
+        }
+
+
+        return $this->render('main/contact.html.twig',[
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
