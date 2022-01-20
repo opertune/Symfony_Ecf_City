@@ -10,10 +10,8 @@ Le secrétaire de mairie doit être en mesure d'ajouter, modifier ou supprimer d
 
 ## Objectif 
 
-- On voudra afficher la météo du jour sur la page d'accueil (API)
-
 - Pages : 
-    - Accueil avec les évènements / actualité à venir
+    - Accueil avec les évènements / actualité à venir / la météo du jour (API)
     - Afficher les évènements (comporteront au moins une photo)
     - Afficher les actualités (comporteront au moins une photo)
     - Histoire
@@ -23,13 +21,11 @@ Le secrétaire de mairie doit être en mesure d'ajouter, modifier ou supprimer d
     - Login 
     - Liste des événements / actualités
     - Modification 
-    - Ajout 
+    - Ajout (Upload photos depuis le pc)
     - Suppression
 
 - Plus : 
-    - Upload photos depuis l'ordi
     - Implémenter une recherche par mots clés
-    - RDV à la mairie et remplir un agenda (en plus)
-    - Sécuriser envoi d'un formulaire avec un Captcha (en plus)
+    - RDV à la mairie et remplir un agenda
 
 Maquette => https://balsamiq.cloud/seih139/pozkzx9
