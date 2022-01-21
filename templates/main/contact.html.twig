@@ -7,11 +7,8 @@
 
 
 <div class="container-fluid">
-    <br>
-    <div class="d-flex"><h1 class="ms-5">Contact</h1><h1 class="col-10">Localisation</h1></div>
-    <br>
-    <br>
     <div class="row">
+    <div class="d-flex mt-4 mb-4"><h1 class="ms-5">Contact</h1><h1 class="col-10">Localisation</h1></div>
         <div class="col-4">
             {% for message in app.flashes('success') %}
                 <h5 class="alert alert-success">{{ message }}</h5>
