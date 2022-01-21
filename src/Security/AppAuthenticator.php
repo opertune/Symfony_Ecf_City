@@ -3,6 +3,7 @@
 namespace App\Security;
 
 use App\Entity\Admin;
+use App\Service\Captcha;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -78,6 +79,10 @@ class AppAuthenticator extends AbstractFormLoginAuthenticator implements Passwor
 
     public function checkCredentials($credentials, UserInterface $user)
     {
+        $captcha = new Captcha($_POST['g-recaptcha-response']);
+        if(!$captcha->captchaIsValid()){
+            return new RedirectResponse('login');
+        }
         return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
     }
 

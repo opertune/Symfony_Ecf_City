@@ -4,6 +4,8 @@
 
 {% block body %}
 
+
+
 <div class="container-fluid">
     <br>
     <div class="d-flex"><h1 class="ms-5">Contact</h1><h1 class="col-10">Localisation</h1></div>
@@ -14,13 +16,15 @@
             {% for message in app.flashes('success') %}
                 <h5 class="alert alert-success">{{ message }}</h5>
             {% endfor %}
+            {% for message in app.flashes('error') %}
+                <h5 class="alert alert-danger">{{ message }}</h5>
+            {% endfor %}
             {{ form_start(form, {'attr': {'class': 'col-12'}}) }} 
                 <div class="form-error">{{ form_errors(form) }}</div>
                 {{ form_row(form.email) }}
-                <br>
                 {{ form_row(form.message) }}
-                <br>
-                <button class="btn btn-primary" type="submit">Envoyer</button>
+                <div class="g-recaptcha d-flex align-items-center justify-content-center" data-sitekey="{{ app.request.server.get('CAPTCHA_SITE_KEY')}}"></div>
+                <button class="btn btn-primary mt-3" type="submit">Envoyer</button>
             {{ form_end(form) }}
         </div>
         

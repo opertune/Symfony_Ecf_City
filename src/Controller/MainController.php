@@ -7,6 +7,7 @@ use App\Entity\News;
 use App\Form\ContactType;
 use App\Repository\EventRepository;
 use App\Repository\NewsRepository;
+use App\Service\Captcha;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,14 +43,23 @@ class MainController extends AbstractController
      * @Route("/contact", name="contact")
      */
     public function contact(Request $request): Response {
-        $form = $this->createForm(ContactType::class);
+        $form = $this->createForm(ContactType::class,[
+            'method' => 'POST',
+            'attr' => [
+                'id' => 'demo-form'
+            ]
+        ]);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            $this->addFlash('success','Message envoyé avec succès !');
+            $captcha = new Captcha($_POST['g-recaptcha-response']);
+            if($captcha->captchaIsValid()){
+                $this->addFlash('success','Message envoyé avec succès !');
+            }else{
+                $this->addFlash('error','Captcha invalide !');
+            }
             return $this->redirectToRoute('contact');
         }
-
 
         return $this->render('main/contact.html.twig',[
             'form' => $form->createView(),

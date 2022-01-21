@@ -25,6 +25,7 @@ class ContactType extends AbstractType
                 ),
                 'attr' => [
                     'placeholder' => 'Votre adresse email',
+                    'class' => 'mb-3',
                 ]
             ])
             ->add('message', TextareaType::class, [
@@ -37,6 +38,7 @@ class ContactType extends AbstractType
                     'placeholder' => 'Votre message',   
                     'rows' => '12',
                     'style' => 'resize:none',
+                    'class' => 'mb-3',
                 ],
                 
             ])
