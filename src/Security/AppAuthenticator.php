@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Security;
@@ -81,7 +82,7 @@ class AppAuthenticator extends AbstractFormLoginAuthenticator implements Passwor
     {
         $captcha = new Captcha($_POST['g-recaptcha-response']);
         if(!$captcha->captchaIsValid()){
-            return new RedirectResponse('login');
+            throw new CustomUserMessageAuthenticationException('Captcha invalide !');
         }
         return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
     }
@@ -108,4 +109,6 @@ class AppAuthenticator extends AbstractFormLoginAuthenticator implements Passwor
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
+
+
 }

@@ -67,6 +67,20 @@ class MainController extends AbstractController
     }
 
     /**
+     * @Route("/search", name="search")
+     */
+    public function search(Request $request): Response {
+        $post = $request->request->get("search");
+        if($post != ""){
+            return $this->render('main/search.html.twig',[
+                'search' => $post,
+            ]);
+        }else{
+            return $this->redirectToRoute("home");
+        }
+    }
+
+    /**
      * @Route("/event/{id}", name="show_event")
      */
     public function show_event_byid(Event $event): Response {
