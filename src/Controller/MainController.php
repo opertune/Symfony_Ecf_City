@@ -69,15 +69,19 @@ class MainController extends AbstractController
     /**
      * @Route("/search", name="search")
      */
-    public function search(Request $request): Response {
+    public function search(Request $request, EventRepository $events_repo, NewsRepository $news_repo): Response {
+        // get search bar value
         $post = $request->request->get("search");
         if($post != ""){
-            return $this->render('main/search.html.twig',[
-                'search' => $post,
-            ]);
-        }else{
-            return $this->redirectToRoute("home");
+            // Return each event/new containing search bar value
+            $events = $events_repo->findBySearchValue($post);
+            $news = $news_repo->findBySearchValue($post);
         }
+        return $this->render('main/search.html.twig',[
+            'search' => $post,
+            'events' => $events,
+            'news' => $news,
+        ]);
     }
 
     /**

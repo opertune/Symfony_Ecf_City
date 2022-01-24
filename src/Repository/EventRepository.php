@@ -47,4 +47,15 @@ class EventRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * Find all events with search bar value parameter
+     */
+    public function findBySearchValue($value){
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.title LIKE :value OR e.description LIKE :value')
+            ->setParameter('value', '%'.$value.'%')
+            ->getQuery()
+            ->execute();
+    }
 }
