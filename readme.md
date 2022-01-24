@@ -11,21 +11,21 @@ Le secrétaire de mairie doit être en mesure d'ajouter, modifier ou supprimer d
 ## Objectif 
 
 - Pages : 
-   :white_check_mark: - Accueil avec les évènements / actualité à venir / la météo du jour (API)
-   :white_check_mark: - Afficher les évènements (comporteront au moins une photo)
-   :white_check_mark: - Afficher les actualités (comporteront au moins une photo)
-   :white_check_mark: - Histoire
-   :white_check_mark: - Contact (localisation du village / formulaire contact avec sécurisation Captcha)
+   :white_check_mark: - Accueil avec les évènements / actualité à venir / la météo du jour (API)  
+   :white_check_mark: - Afficher les évènements (comporteront au moins une photo)  
+   :white_check_mark: - Afficher les actualités (comporteront au moins une photo)  
+   :white_check_mark: - Histoire  
+   :white_check_mark: - Contact (localisation du village / formulaire contact avec sécurisation Captcha)  
 
 - Admin :
-   :white_check_mark: - Login 
-   :white_check_mark: - Liste des événements / actualités
-   :white_check_mark: - Modification 
-   :white_check_mark: - Ajout (Upload photos depuis le pc)
-   :white_check_mark: - Suppression
+   :white_check_mark: - Login  
+   :white_check_mark: - Liste des événements / actualités  
+   :white_check_mark: - Modification  
+   :white_check_mark: - Ajout (Upload photos depuis le pc)  
+   :white_check_mark: - Suppression  
 
 - Plus : 
-    - Implémenter une recherche par mots clés
-    - RDV à la mairie et remplir un agenda
+   :white_large_square: - Implémenter une recherche par mots clés  
+   :white_large_square: - RDV à la mairie et remplir un agenda  
 
 Maquette => https://balsamiq.cloud/seih139/pozkzx9
