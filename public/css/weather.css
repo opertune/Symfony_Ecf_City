@@ -17,10 +17,12 @@ body {
 }
 
 .card {
-    background-color: #ff0000;
+    background-color: #ffffffb9;
     border-radius: 50px;
     color: #6f707d;
-    font-family: 'Marcellus', serif
+    font-family: 'Marcellus', serif;
+    border: solid 2px;
+    border-color: white;
 }
 
 #heading {
