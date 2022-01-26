@@ -1,0 +1,21 @@
+.calendarTr{
+    /* color: red; */
+    height: 100px;
+}
+
+.calendarTh{
+    border: solid 1px white;
+}
+#calendar{
+    table-layout: fixed;
+    width: 50%;
+    margin-bottom: 2%;
+}
+
+.calendarTd, .calendarTdVoid{
+    border: solid 1px white;
+}
+
+.calendarTd:hover{
+    background-color: #434343;
+}

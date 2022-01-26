@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+	<script src="{{asset("js/calendar.js")}}"></script>
+	<script src="{{asset("js/day.js")}}"></script>
+{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset("css/calendar.css")}}">
+{% endblock %}
+
+{% block title %}Rendez-vous
+{% endblock %}
+{% block body %}
+	<div class="container-fluid">
+		<div class="d-flex mt-4 mb-4">
+			<h1 class="ms-5">Prendre rendez-vous</h1>
+		</div>
+		<div class="row col-md-4">
+			<div class="col">
+				<button type="button" class="btn btn-success" onclick="previous()">
+					<span aria-hidden="true">&laquo;</span>
+				</button>
+			</div>
+			<div class="col">
+				<h1 id="month"></h1>
+			</div>
+			<div class="col">
+				<button type="button" class="btn btn-success" onclick="next()">
+					<span aria-hidden="true">&raquo;</span>
+				</button>
+			</div>
+		</div>
+		<div class="row mb-5">
+			<div class="col">
+				<table class="w-100" id="calendar">
+					<thead>
+						<tr>
+							<th class="calendarTh">Lundi</th>
+							<th class="calendarTh">Mardi</th>
+							<th class="calendarTh">Mecredi</th>
+							<th class="calendarTh">Jeudi</th>
+							<th class="calendarTh">Vendredi</th>
+							<th class="calendarTh">Samedi</th>
+							<th class="calendarTh">Dimanche</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+
+			<div id="bookingDiv" class="col"></div>
+		</div>
+	</div>
+
+	{# Modal for booking hour #}
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title text-black" id="exampleModalLabel">Remplir le formulaire pour prendre rendez-vous</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
