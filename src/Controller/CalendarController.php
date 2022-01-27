@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Booking;
 use App\Form\BookingType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,8 +15,9 @@ class CalendarController extends AbstractController
     /**
      * @Route("/calendar", name="calendar")
      */
-    public function calendar(Booking $booking = null, Request $request): Response
+    public function calendar(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $booking = new Booking();
         $form = $this->createform(BookingType::class, $booking,[
             'method' => 'POST',
             'attr'=>[
@@ -25,6 +27,8 @@ class CalendarController extends AbstractController
         $form->handleRequest($request);
         
         if($form->isSubmitted() && $form->isValid()){
+            $entityManager->persist($booking);
+            $entityManager->flush();
             return $this->redirectToRoute("calendar");
         }
 
