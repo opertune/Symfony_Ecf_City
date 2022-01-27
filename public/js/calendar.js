@@ -11,7 +11,7 @@ let month = 00
 let day = []
 
 // Return first day in a month (Sunday - Saturday : 0 - 6)
-function firstDayInMonth(){
+function firstDayInMonth() {
     return new Date(year, month, 1).getDay()
 }
 
@@ -22,7 +22,6 @@ function previous() {
         month = 11
     }
     monthName(year, month)
-    removeBookingDiv()
 }
 
 // Next month
@@ -30,9 +29,8 @@ function next() {
     month++
     if (month > 11) {
         month = 00
-    } 
+    }
     monthName(year, month)
-    removeBookingDiv()
 }
 
 // Display month name
@@ -46,37 +44,6 @@ function monthName(year, month) {
 // Return number of day in a month
 function dateInMonth(month, year) {
     return new Date(year, month, 0).getDate()
-}
-
-// Remove all content in bookingDiv
-function removeBookingDiv(){
-    if(document.getElementById("bookingTitle")){
-        document.getElementById("bookingDiv").removeChild(document.getElementById("bookingTitle"))
-        document.getElementById("bookingDiv").removeChild(document.getElementById("hourDiv"))
-    }
-}
-
-function showBooking(e) {
-    removeBookingDiv()
-    // div title
-    let title = document.createElement("h4")
-    title.id = "bookingTitle"
-    title.innerHTML = "Sélectionner l'horaire qui vous convient"
-    // add booking div to col div
-    document.getElementById("bookingDiv").appendChild(title)
-
-    // get number of booking for the clicked day
-    let nbBooking = day[parseInt(document.getElementById(e.id).id) + firstDayInMonth()-1]["_nbPlace"]
-    let hour = document.createElement("div")
-    hour.className = ""
-    hour.id = "hourDiv"
-    document.getElementById("bookingDiv").appendChild(hour)
-    // Create each booking with hour
-    for(i=1; i<= nbBooking; i++){
-        let content = document.createElement("span")
-        content.innerHTML = "<button type=\"button\" class=\"btn btn-secondary me-2\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">"+day[parseInt(document.getElementById(e.id).id) + firstDayInMonth()-1]["_hour"][i-1]+"</button>"
-        document.getElementById("hourDiv").appendChild(content)
-    }
 }
 
 // Display calendar
@@ -104,7 +71,6 @@ function showCalendar() {
         if (fDay == 0) {
             fDay = 7
         }
-        day[i] = new Day(i - fDay + 1,6)
 
         // Create blank td 
         if (i < fDay) {
@@ -118,8 +84,7 @@ function showCalendar() {
             let td = document.createElement("td")
             td.id = i - fDay + 1
             td.className = "calendarTd"
-            td.innerHTML = "<div class=\"container\"><div class=\"col\">"+day[i]["_day"]+"</div><div class=\"col mt-2\"> Place(s): "+day[i]["_nbPlace"]+"</div></div>"
-            td.setAttribute("onclick", "showBooking(this)")
+            td.innerHTML = "<div id=\"" + td.id + "\"class=\"container\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" onclick=\"\"><div class=\"col\">" + td.id + "</div>"
 
             document.getElementById("tr" + id).appendChild(td)
         }
