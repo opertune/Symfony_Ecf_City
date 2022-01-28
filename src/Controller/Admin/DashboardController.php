@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Booking;
 use App\Entity\Event;
 use App\Entity\News;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -32,5 +33,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoRoute('Retour sur le site', 'fas fa-home', 'home');
         yield MenuItem::linkToCrud('Évènements', 'fa fa-comment', Event::class);
         yield MenuItem::linkToCrud('Actualités', 'fa fa-file-text', News::class);
+        yield MenuItem::linkToCrud('Rendez-vous', 'fa fa-file-text', Booking::class);
     }
 }

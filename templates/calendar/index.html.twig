@@ -10,8 +10,6 @@
 {% block title %}Rendez-vous
 {% endblock %}
 {% block body %}
-
-<p id="test"></p>
 	<div class="container-fluid">
 		<div class="d-flex mt-4 mb-4">
 			<h1 class="ms-5">Prendre rendez-vous</h1>
@@ -45,16 +43,14 @@
 							<th class="calendarTh">Dimanche</th>
 						</tr>
 					</thead>
-					<tbody>
-
-					</tbody>
+					<tbody></tbody>
 				</table>
 			</div>
 		</div>
 	</div>
 
 	{# Modal for booking hour #}
-    {% form_theme bookingForm 'bootstrap_4_layout.html.twig' %}
+	{% form_theme bookingForm 'bootstrap_4_layout.html.twig' %}
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -63,17 +59,17 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-                    {{ form_start(bookingForm)}}
-                        <div class="row">
-							{{ form_row(bookingForm.date)}}
-							{{ form_row(bookingForm.hour)}}
-						</div>
-                        {{ form_errors(bookingForm) }}
-                        {{ form_row(bookingForm.name)}}
-                        {{ form_row(bookingForm.phone)}}
-                        <button type="submit" class="btn btn-primary mt-2">Valider</button>
-                    {{ form_end(bookingForm)}}
-                </div>
+					{{ form_start(bookingForm)}}
+					<div class="row">
+						{{ form_row(bookingForm.date)}}
+						{{ form_row(bookingForm.hour)}}
+					</div>
+					{{ form_errors(bookingForm) }}
+					{{ form_row(bookingForm.name)}}
+					{{ form_row(bookingForm.phone)}}
+					<button type="submit" class="btn btn-primary mt-2">Valider</button>
+					{{ form_end(bookingForm)}}
+				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 				</div>
@@ -81,3 +77,4 @@
 		</div>
 	</div>
 {% endblock %}
+

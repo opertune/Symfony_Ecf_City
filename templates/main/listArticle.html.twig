@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{pageTitle}}
+{% endblock %}
+
+{% block body %}
+	<div class="container-fluid">
+    	<div class="d-flex mt-4 mb-4">
+		    <h1 class="ms-5">{{pageTitle}}</h1>
+	    </div>
+		<div class="row">
+			{% for item in items %}
+				<div class="col-4">
+					<article class="border rounded col-md-8 mb-3">
+						<img src="{{item.image}}" class="d-block w-100" alt="Image">
+						<h3>{{item.title}}</h3>
+						<p class="text-truncate mx-2">{{item.description}}</p>
+						<a href="{{ path(path,{'id': item.id}) }}"><button class="btn btn-primary mb-2">Suite</button></a>
+					</article>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

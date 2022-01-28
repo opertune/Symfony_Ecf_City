@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Booking;
 use App\Form\BookingType;
+use App\Repository\BookingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,6 +27,7 @@ class CalendarController extends AbstractController
         ]);
         $form->handleRequest($request);
         
+        // Add new booking in database
         if($form->isSubmitted() && $form->isValid()){
             $entityManager->persist($booking);
             $entityManager->flush();

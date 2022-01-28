@@ -85,6 +85,28 @@ class MainController extends AbstractController
     }
 
     /**
+     * @Route("/event", name="event")
+     */
+    public function event(EventRepository $events_repo): Response{
+        return $this->render('main/listArticle.html.twig',[
+            'pageTitle' => 'Évènements',
+            'path' => "show_event",
+            'items' => $events_repo->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/new", name="new")
+     */
+    public function new(NewsRepository $news_repo): Response{
+        return $this->render('main/listArticle.html.twig',[
+            'pageTitle' => 'Actualité',
+            'path' => "show_new",
+            'items' => $news_repo->findAll(),
+        ]);
+    }
+
+    /**
      * @Route("/event/{id}", name="show_event")
      */
     public function show_event_byid(Event $event): Response {

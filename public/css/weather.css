@@ -47,3 +47,7 @@ body {
 *:focus {
     outline: none
 }
+
+#card{
+    background-color: rgb(206, 203, 203);
+}

@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Form;
 
 use App\Entity\Booking;
-use DateTime;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -42,9 +40,7 @@ class BookingType extends AbstractType
             'widget' => 'choice',
             'with_minutes' => false,
             'with_seconds' => false,
-            'hours'=>[
-                9, 10, 11, 14, 15, 16
-            ],
+            'hours'=> [ 9, 10, 11, 14, 15, 16 ],
         ])
 
         ->add('name', TextType::class,[
