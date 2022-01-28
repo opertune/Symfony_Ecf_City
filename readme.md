@@ -26,6 +26,6 @@ Le secrétaire de mairie doit être en mesure d'ajouter, modifier ou supprimer d
 
 - Plus :  
    :white_check_mark: - Implémenter une recherche par mots clés  
-   :white_large_square: - RDV à la mairie et remplir un agenda  
+   :white_check_mark: - RDV à la mairie et remplir un agenda  
 
 Maquette => https://balsamiq.cloud/seih139/pozkzx9
